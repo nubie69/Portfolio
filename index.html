@@ -7,44 +7,44 @@
   <meta name="description" content="Student portfolio for Zach Andrie B. Gelacio, showcasing web projects, skills, education, and contact information.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="Home">
-      <span class="brand-mark">ZG</span>
-      <span>Zach Andrie B. Gelacio</span>
-    </a>
+    <a class="brand" href="#top" aria-label="Home">Zach&lt;/&gt;</a>
     <nav class="nav-links" aria-label="Primary navigation">
       <a href="#top">Home</a>
       <a href="#about">About</a>
-      <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main id="top">
-    <section class="hero">
-      <div class="hero-media" aria-hidden="true"></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <p class="eyebrow">4th-year information technology student</p>
-        <h1>Building thoughtful web experiences with practical purpose.</h1>
-        <p class="hero-copy">I am a graduating IT student focused on front-end development, IoT, and well-structured projects that turn ideas into clear, usable products.</p>
+    <section class="hero section-shell" aria-label="Introduction">
+      <div class="hero-copy-block">
+        <p class="eyebrow">Available for opportunities</p>
+        <h1>Hi, I'm Zach Andrie</h1>
+        <h2>4th-year IT student</h2>
+        <p class="hero-tagline">Building digital ideas that work.</p>
+        <p>I am a graduating IT student focused on front-end development, IoT, and well-structured projects that turn ideas into clear, usable products.</p>
         <div class="hero-actions">
           <a class="button primary" href="#projects">View Projects</a>
-          <a class="button secondary" href="#contact">Contact Me</a>
+          <a class="button ghost" href="#contact">Contact Me</a>
         </div>
       </div>
-      <aside class="hero-note" aria-label="Portfolio snapshot">
-        <span>Portfolio focus</span>
-        <strong>Front-end, IoT, and student systems</strong>
-      </aside>
+
+      <div class="profile-orbit" aria-label="Profile image placeholder">
+        <img src="assets/portfolio-hero.png" alt="Zach Andrie B. Gelacio profile placeholder">
+        <span class="orbit-badge badge-one">HTML</span>
+        <span class="orbit-badge badge-two">CSS</span>
+        <span class="orbit-badge badge-three">JS</span>
+      </div>
     </section>
 
-    <section class="metrics" aria-label="Student highlights">
+    <section class="stats section-shell" aria-label="Student highlights">
       <div>
         <strong>4th</strong>
         <span>Year standing</span>
@@ -63,62 +63,63 @@
       </div>
     </section>
 
-    <section class="section intro" id="about">
-      <div class="section-heading">
-        <p class="eyebrow">About</p>
-        <h2>A student developer shaping classwork into polished, useful digital products.</h2>
-      </div>
-      <p>I enjoy building interfaces that are easy to scan, simple to use, and grounded in real project requirements. My current work blends web development fundamentals with database-backed apps, capstone planning, and hands-on experimentation.</p>
-    </section>
-
-    <section class="section" id="projects">
-      <div class="section-heading">
-        <p class="eyebrow">Selected projects</p>
-        <h2>Coursework and personal builds that show how I think.</h2>
-      </div>
-      <div class="project-grid">
-        <article class="project-card">
-          <div>
-            <div class="project-meta">
-              <span>Capstone</span>
-              <span>2027</span>
-            </div>
-            <h3>Student Services Portal</h3>
-            <p>Designed and developed a web portal concept for managing student requests, announcements, and document tracking.</p>
+    <section class="about section-shell" id="about">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="assets/portfolio-hero.png" alt="Zach Andrie B. Gelacio about image placeholder">
+        </div>
+        <div class="about-content">
+          <p class="eyebrow">About</p>
+          <h3>A student developer shaping classwork into polished, useful digital products.</h3>
+          <p>I enjoy building interfaces that are easy to scan, simple to use, and grounded in real project requirements. My current work blends web development fundamentals with database-backed apps, capstone planning, and hands-on experimentation.</p>
+          <div class="about-tags" aria-label="What I build">
+            <span>Front-end experiences</span>
+            <span>IoT projects</span>
+            <span>Student systems</span>
           </div>
-          <a href="#" aria-label="View Student Services Portal project">View project</a>
-        </article>
-        <article class="project-card">
-          <div>
-            <div class="project-meta">
-              <span>Web App</span>
-              <span>2025</span>
-            </div>
-            <h3>TaskFlow Dashboard</h3>
-            <p>Built a responsive task management dashboard with organized cards, status filters, and clean user flows.</p>
-          </div>
-          <a href="#" aria-label="View TaskFlow Dashboard project">View project</a>
-        </article>
-        <article class="project-card">
-          <div>
-            <div class="project-meta">
-              <span>UI Design</span>
-              <span>2025</span>
-            </div>
-            <h3>Campus Events Website</h3>
-            <p>Created a professional event listing interface for browsing school activities, deadlines, and organization updates.</p>
-          </div>
-          <a href="#" aria-label="View Campus Events Website project">View project</a>
-        </article>
+        </div>
       </div>
     </section>
 
-    <section class="section split" id="skills">
-      <div class="section-heading">
-        <p class="eyebrow">Skills</p>
-        <h2>Developing the technical foundation for professional work.</h2>
+    <section class="skills section-shell" id="skills">
+      <h2 class="section-title">My Skills</h2>
+      <div class="skill-meter-grid">
+        <article class="skill-meter html">
+          <span>HTML</span>
+          <div aria-label="HTML skill level"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="dim"></i><i class="dim"></i></div>
+        </article>
+        <article class="skill-meter css">
+          <span>CSS</span>
+          <div aria-label="CSS skill level"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="dim"></i><i class="dim"></i></div>
+        </article>
+        <article class="skill-meter js">
+          <span>JS</span>
+          <div aria-label="JavaScript skill level"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="dim"></i><i class="dim"></i><i class="dim"></i></div>
+        </article>
+        <article class="skill-meter react">
+          <span>React</span>
+          <div aria-label="React skill level"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="dim"></i><i class="dim"></i><i class="dim"></i></div>
+        </article>
+        <article class="skill-meter node">
+          <span>Node</span>
+          <div aria-label="Node skill level"><i></i><i></i><i></i><i></i><i></i><i></i><i class="dim"></i><i class="dim"></i><i class="dim"></i><i class="dim"></i></div>
+        </article>
+        <article class="skill-meter php">
+          <span>PHP</span>
+          <div aria-label="PHP skill level"><i></i><i></i><i></i><i></i><i></i><i></i><i class="dim"></i><i class="dim"></i><i class="dim"></i><i class="dim"></i></div>
+        </article>
+        <article class="skill-meter mongo">
+          <span>MongoDB</span>
+          <div aria-label="MongoDB skill level"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="dim"></i><i class="dim"></i><i class="dim"></i></div>
+        </article>
+        <article class="skill-meter git">
+          <span>Git</span>
+          <div aria-label="Git skill level"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="dim"></i><i class="dim"></i><i class="dim"></i></div>
+        </article>
       </div>
-      <div class="service-list">
+
+      <div class="skill-card-grid">
         <article>
           <h3>Front-End Development</h3>
           <p>HTML, CSS, JavaScript, TypeScript, React.js, React Native, Tailwind CSS</p>
@@ -138,52 +139,105 @@
       </div>
     </section>
 
-    <section class="section" id="education">
-      <div class="section-heading">
-        <p class="eyebrow">Education</p>
-        <h2>Currently completing my final year and building toward my first professional role.</h2>
+    <section class="projects section-shell" id="projects">
+      <h2 class="section-title">My Projects</h2>
+      <div class="project-tabs" aria-label="Project categories">
+        <span>Web Application</span>
+        <span>Student Systems</span>
       </div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <span>2022 - 2026</span>
-          <div>
-            <h3>Bachelor of Science in Information Technology</h3>
-            <p>4th-year student focused on web development, IoT, systems analysis, database design, and software project management.</p>
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-preview"></div>
+          <p class="project-meta">Capstone / 2027</p>
+          <h3>Student Services Portal</h3>
+          <p>Designed and developed a web portal concept for managing student requests, announcements, and document tracking.</p>
+          <div class="card-actions">
+            <a href="#" aria-label="View Student Services Portal repository">Repository</a>
+            <a href="#" aria-label="View Student Services Portal demo">Demo</a>
           </div>
-        </div>
-        <div class="timeline-item">
-          <span>2025 - 2026</span>
-          <div>
-            <h3>Capstone Project</h3>
-            <p>Planning, designing, and building a practical web app with documentation, testing, and presentation requirements.</p>
+        </article>
+        <article class="project-card">
+          <div class="project-preview"></div>
+          <p class="project-meta">Web App / 2025</p>
+          <h3>TaskFlow Dashboard</h3>
+          <p>Built a responsive task management dashboard with organized cards, status filters, and clean user flows.</p>
+          <div class="card-actions">
+            <a href="#" aria-label="View TaskFlow Dashboard repository">Repository</a>
+            <a href="#" aria-label="View TaskFlow Dashboard demo">Demo</a>
           </div>
-        </div>
-        <div class="timeline-item">
-          <span>2024 - 2025</span>
-          <div>
-            <h3>Academic and Personal Projects</h3>
-            <p>Completed websites, IoT projects, prototypes, dashboards, and database-backed exercises to strengthen practical development skills.</p>
+        </article>
+        <article class="project-card">
+          <div class="project-preview"></div>
+          <p class="project-meta">UI Design / 2025</p>
+          <h3>Campus Events Website</h3>
+          <p>Created a professional event listing interface for browsing school activities, deadlines, and organization updates.</p>
+          <div class="card-actions">
+            <a href="#" aria-label="View Campus Events Website repository">Repository</a>
+            <a href="#" aria-label="View Campus Events Website demo">Demo</a>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
-    <section class="contact-band" id="contact">
-      <div>
-        <p class="eyebrow">Open to internships and entry-level opportunities</p>
-        <h2>Interested in working together or reviewing my student projects?</h2>
+    <section class="education section-shell" id="education">
+      <h2 class="section-title">Education</h2>
+      <div class="timeline">
+        <article>
+          <span>2022 - 2026</span>
+          <h3>Bachelor of Science in Information Technology</h3>
+          <p>4th-year student focused on web development, IoT, systems analysis, database design, and software project management.</p>
+        </article>
+        <article>
+          <span>2025 - 2026</span>
+          <h3>Capstone Project</h3>
+          <p>Planning, designing, and building a practical web app with documentation, testing, and presentation requirements.</p>
+        </article>
+        <article>
+          <span>2024 - 2025</span>
+          <h3>Academic and Personal Projects</h3>
+          <p>Completed websites, IoT projects, prototypes, dashboards, and database-backed exercises to strengthen practical development skills.</p>
+        </article>
       </div>
-      <a class="button primary" href="mailto:zachgelacio11@gmail.com">zachgelacio11@gmail.com</a>
+    </section>
+
+    <section class="contact section-shell" id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="contact-kicker">Open to internships and entry-level opportunities</p>
+      <p class="contact-copy">Interested in working together or reviewing my student projects?</p>
+      <form class="contact-form" action="mailto:zachgelacio11@gmail.com" method="post" enctype="text/plain">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" autocomplete="name">
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email">
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="7"></textarea>
+        </label>
+        <button class="button primary" type="submit">Send a message</button>
+      </form>
+      <div class="social-row" aria-label="Social links">
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="#">Resume</a>
+        <a href="mailto:zachgelacio11@gmail.com">Email</a>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
+    <a class="brand" href="#top" aria-label="Home">Zach&lt;/&gt;</a>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="#top">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
     <span>&copy; 2026 Zach Andrie B. Gelacio. All rights reserved.</span>
-    <div>
-      <a href="#">LinkedIn</a>
-      <a href="#">GitHub</a>
-      <a href="#">Resume</a>
-    </div>
   </footer>
 </body>
 </html>
