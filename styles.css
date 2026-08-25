@@ -513,11 +513,11 @@ h1 {
     linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.08) 49%, rgba(255, 255, 255, 0.08) 51%, transparent 52%);
 }
 
-.certificate-preview span {
-  color: var(--white);
-  font: 800 1.15rem "DM Mono", monospace;
-  text-transform: uppercase;
-  text-shadow: 0 0 24px rgba(255, 79, 216, 0.82);
+.certificate-preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .certificate-content h3 {
