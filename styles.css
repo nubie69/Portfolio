@@ -489,6 +489,22 @@ h1 {
   transition: transform 420ms ease, filter 420ms ease;
 }
 
+.image-trigger {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.image-trigger img {
+  pointer-events: none;
+}
+
 .project-card:hover .project-preview img {
   filter: saturate(1.08) contrast(1.05);
   transform: scale(1.04);
@@ -608,6 +624,10 @@ h1 {
   object-fit: cover;
 }
 
+.certificate-preview .image-trigger {
+  min-height: 100%;
+}
+
 .certificate-details {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -692,6 +712,87 @@ h1 {
 .social-row a {
   min-width: 86px;
   padding: 0 16px;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.image-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 5, 10, 0.82);
+  backdrop-filter: blur(14px);
+}
+
+.lightbox-dialog {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 12px;
+  width: min(1080px, 100%);
+  max-height: min(86vh, 820px);
+  margin: 0;
+  padding: 14px;
+  border: 1px solid rgba(220, 230, 247, 0.22);
+  border-radius: 8px;
+  background: rgba(7, 9, 18, 0.94);
+  box-shadow: 0 30px 110px rgba(0, 0, 0, 0.58);
+}
+
+.lightbox-dialog img {
+  display: block;
+  width: 100%;
+  max-height: calc(86vh - 92px);
+  border-radius: 6px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.lightbox-dialog figcaption {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(220, 230, 247, 0.24);
+  border-radius: 8px;
+  color: var(--ink);
+  background: rgba(7, 9, 18, 0.88);
+  font: 800 0.95rem "Manrope", Arial, sans-serif;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.lightbox-close:hover {
+  border-color: rgba(38, 217, 208, 0.62);
+  background: rgba(38, 217, 208, 0.16);
+  transform: translateY(-1px);
 }
 
 .site-footer {
@@ -813,6 +914,21 @@ h1 {
 
   .card-actions {
     flex-direction: column;
+  }
+
+  .image-lightbox {
+    padding: 14px;
+  }
+
+  .lightbox-dialog {
+    padding: 10px;
+  }
+
+  .lightbox-close {
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
   }
 
   .site-footer {
