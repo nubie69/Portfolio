@@ -757,13 +757,52 @@ body.lightbox-open {
   box-shadow: 0 30px 110px rgba(0, 0, 0, 0.58);
 }
 
+.lightbox-toolbar {
+  display: inline-flex;
+  width: fit-content;
+  max-width: calc(100% - 56px);
+  gap: 8px;
+  align-items: center;
+  padding-right: 52px;
+}
+
+.lightbox-toolbar button {
+  display: grid;
+  min-width: 42px;
+  height: 38px;
+  place-items: center;
+  padding: 0 12px;
+  border: 1px solid rgba(220, 230, 247, 0.24);
+  border-radius: 8px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.055);
+  font: 800 0.84rem "Manrope", Arial, sans-serif;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.lightbox-toolbar button:hover {
+  border-color: rgba(38, 217, 208, 0.62);
+  background: rgba(38, 217, 208, 0.16);
+  transform: translateY(-1px);
+}
+
+.lightbox-image-stage {
+  overflow: auto;
+  display: grid;
+  max-height: calc(86vh - 144px);
+  min-height: 220px;
+  place-items: center;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
 .lightbox-dialog img {
   display: block;
   width: 100%;
-  max-height: calc(86vh - 92px);
-  border-radius: 6px;
+  max-height: calc(86vh - 154px);
   object-fit: contain;
-  background: rgba(255, 255, 255, 0.04);
+  transition: width 160ms ease;
 }
 
 .lightbox-dialog figcaption {

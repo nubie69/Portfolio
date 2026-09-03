@@ -227,7 +227,7 @@
       <article class="certificate-card">
         <div class="certificate-preview">
           <button class="image-trigger" type="button" data-full-image="assets/Certificate.jpg" data-image-title="CCNA Switching, Routing, and Wireless Essentials certificate">
-            <img src="assets/Certificate.jpg" alt="CCNA Switching, Routing, and Wireless Essentials certificate">
+            <img src="assets/CCNA.jpg" alt="CCNA Switching, Routing, and Wireless Essentials certificate">
           </button>
         </div>
         <div class="certificate-content">
@@ -237,11 +237,34 @@
           <dl class="certificate-details">
             <div>
               <dt>Issued</dt>
-              <dd>Dec 2025</dd>
+              <dd>11-23-2025</dd>
             </div>
             <div>
               <dt>Focus</dt>
               <dd>Networking</dd>
+            </div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="certificate-card">
+        <div class="certificate-preview">
+          <button class="image-trigger" type="button" data-full-image="assets/topcit.png" data-image-title="TOPCIT exam certificate">
+            <img src="assets/topcit.png" alt="TOPCIT exam certificate">
+          </button>
+        </div>
+        <div class="certificate-content">
+          <p class="eyebrow">TOPCIT Exam</p>
+          <h3>TOPCIT: Test of Practical Competency in IT</h3>
+          <p>TOPCIT (Test of Practical Competency in IT) is a computer-based assessment developed in South Korea to evaluate the practical skills and job readiness of IT students and professionals.</p>
+          <dl class="certificate-details">
+            <div>
+              <dt>Issued</dt>
+              <dd>09-03-2026</dd>
+            </div>
+            <div>
+              <dt>Focus</dt>
+              <dd>IT competency</dd>
             </div>
           </dl>
         </div>
@@ -280,7 +303,14 @@
     <div class="lightbox-backdrop" data-close-lightbox></div>
     <figure class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Expanded image preview">
       <button class="lightbox-close" type="button" aria-label="Close image preview" data-close-lightbox>X</button>
-      <img src="" alt="" id="lightboxImage">
+      <div class="lightbox-toolbar" aria-label="Image zoom controls">
+        <button type="button" data-zoom-out aria-label="Zoom out">-</button>
+        <button type="button" data-zoom-reset aria-label="Reset zoom">100%</button>
+        <button type="button" data-zoom-in aria-label="Zoom in">+</button>
+      </div>
+      <div class="lightbox-image-stage">
+        <img src="" alt="" id="lightboxImage">
+      </div>
       <figcaption id="lightboxCaption"></figcaption>
     </figure>
   </div>
@@ -333,11 +363,31 @@
     const lightboxCaption = document.querySelector("#lightboxCaption");
     const imageTriggers = document.querySelectorAll(".image-trigger");
     const closeLightboxButtons = document.querySelectorAll("[data-close-lightbox]");
+    const lightboxStage = document.querySelector(".lightbox-image-stage");
+    const zoomInButton = document.querySelector("[data-zoom-in]");
+    const zoomOutButton = document.querySelector("[data-zoom-out]");
+    const zoomResetButton = document.querySelector("[data-zoom-reset]");
+    let lightboxZoom = 1;
+
+    function applyLightboxZoom() {
+      lightboxImage.style.width = `${lightboxZoom * 100}%`;
+      lightboxImage.style.maxHeight = lightboxZoom > 1 ? "none" : "";
+      lightboxImage.style.cursor = lightboxZoom > 1 ? "move" : "zoom-in";
+      zoomResetButton.textContent = `${Math.round(lightboxZoom * 100)}%`;
+    }
+
+    function setLightboxZoom(nextZoom) {
+      lightboxZoom = Math.min(Math.max(nextZoom, 1), 3);
+      applyLightboxZoom();
+    }
 
     function openLightbox(src, title) {
       lightboxImage.src = src;
       lightboxImage.alt = title;
       lightboxCaption.textContent = title;
+      setLightboxZoom(1);
+      lightboxStage.scrollTop = 0;
+      lightboxStage.scrollLeft = 0;
       imageLightbox.classList.add("is-open");
       imageLightbox.setAttribute("aria-hidden", "false");
       document.body.classList.add("lightbox-open");
@@ -350,6 +400,7 @@
       lightboxImage.src = "";
       lightboxImage.alt = "";
       lightboxCaption.textContent = "";
+      setLightboxZoom(1);
     }
 
     imageTriggers.forEach((trigger) => {
@@ -362,9 +413,29 @@
       button.addEventListener("click", closeLightbox);
     });
 
+    zoomInButton.addEventListener("click", () => setLightboxZoom(lightboxZoom + 0.25));
+    zoomOutButton.addEventListener("click", () => setLightboxZoom(lightboxZoom - 0.25));
+    zoomResetButton.addEventListener("click", () => {
+      setLightboxZoom(1);
+      lightboxStage.scrollTop = 0;
+      lightboxStage.scrollLeft = 0;
+    });
+
+    lightboxStage.addEventListener("wheel", (event) => {
+      if (!imageLightbox.classList.contains("is-open")) return;
+      event.preventDefault();
+      setLightboxZoom(lightboxZoom + (event.deltaY < 0 ? 0.15 : -0.15));
+    }, { passive: false });
+
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && imageLightbox.classList.contains("is-open")) {
         closeLightbox();
+      } else if ((event.key === "+" || event.key === "=") && imageLightbox.classList.contains("is-open")) {
+        setLightboxZoom(lightboxZoom + 0.25);
+      } else if (event.key === "-" && imageLightbox.classList.contains("is-open")) {
+        setLightboxZoom(lightboxZoom - 0.25);
+      } else if (event.key === "0" && imageLightbox.classList.contains("is-open")) {
+        setLightboxZoom(1);
       }
     });
   </script>
