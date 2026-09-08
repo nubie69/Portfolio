@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">ZG temporary placeholder</title>
+  <desc id="desc">Temporary portfolio image showing the initials ZG.</desc>
+  <rect width="1200" height="900" fill="#101722"/>
+  <circle cx="290" cy="230" r="180" fill="#26d9d0" opacity="0.2"/>
+  <circle cx="920" cy="690" r="220" fill="#ffc857" opacity="0.18"/>
+  <rect x="96" y="86" width="1008" height="728" rx="36" fill="#151d2a" stroke="#dce6f7" stroke-opacity="0.16"/>
+  <text x="600" y="525" fill="#f6f8fb" font-family="Manrope, Arial, sans-serif" font-size="220" font-weight="800" text-anchor="middle" letter-spacing="0">ZG</text>
+</svg>
