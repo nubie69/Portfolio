@@ -443,7 +443,7 @@ h1 {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
 }
 
@@ -1027,6 +1027,98 @@ body.lightbox-open {
   .site-footer {
     justify-items: start;
   }
+}
+
+/* Collections share the same card hierarchy on the home and archive pages. */
+[hidden] { display: none !important; }
+section[id] { scroll-margin-top: 104px; }
+.project-card, .certificate-card { min-width: 0; background: #14191d; }
+.project-card h3, .certificate-card h3 { overflow-wrap: anywhere; }
+.projects .section-heading { width: 100%; text-align: left; margin-bottom: 32px; }
+.projects .section-title { font-size: 3rem; }
+.project-preview, .project-card:not(.featured) .project-preview {
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+  background: #20262b;
+}
+.project-body { padding: 20px; }
+.project-tags { gap: 6px; }
+.project-tags span { padding: 5px 8px; font-size: 0.68rem; }
+.card-actions { flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 22px; }
+.card-actions a, .preview-action {
+  min-width: 0;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--cyan);
+  background: transparent;
+  font: 800 0.78rem "Manrope", Arial, sans-serif;
+  cursor: pointer;
+}
+.preview-action:hover { background: rgba(38, 217, 208, 0.08); border-color: var(--cyan); }
+.collection-link { display: flex; justify-content: center; margin-top: 32px; }
+.certificate-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.certificate-grid .certificate-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.certificate-preview { border: 0; border-radius: 0; background: #eee; aspect-ratio: 4 / 3; }
+.certificate-preview img { height: 100%; object-fit: contain; }
+.certificate-content { display: flex; flex: 1; flex-direction: column; padding: 16px; }
+.certificate-content h3 { font-size: 0.95rem; line-height: 1.45; margin-bottom: 12px; }
+.certificate-content p { margin-bottom: 12px; font-size: 0.8rem; }
+.certificate-content time { margin-top: auto; color: var(--amber); font-size: 0.75rem; }
+.certificates .section-heading { width: 100%; text-align: left; margin-bottom: 28px; }
+.certificates .section-title { font-size: 2rem; }
+.collection-page { padding: 54px 0 80px; min-height: 70vh; }
+.collection-heading h1 { font-size: 3rem; line-height: 1.15; margin-bottom: 32px; }
+.collection-toolbar { display: flex; flex-wrap: wrap; align-items: end; gap: 16px; }
+.collection-toolbar label { display: grid; gap: 8px; font-size: 0.85rem; color: var(--muted); }
+.collection-toolbar select, .collection-toolbar input {
+  min-height: 46px;
+  max-width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #14191d;
+  color: var(--ink);
+  font: inherit;
+  color-scheme: dark;
+}
+.collection-search { flex: 1; min-width: 200px; max-width: 460px; }
+.result-count { color: var(--muted); font-size: 0.8rem; margin: 24px 0 16px; }
+.empty-state { padding: 48px 0; text-align: center; color: var(--muted); }
+.nav-links [aria-current="page"] { color: var(--cyan); }
+.hero { min-height: auto; padding-top: 40px; padding-bottom: 24px; }
+.hero h1 { font-size: 3rem; line-height: 1.12; }
+.hero-showcase { max-width: 270px; }
+.projects { padding-top: 48px; }
+.project-abstract span { font-size: 2rem; }
+@media (max-width: 960px) {
+  .certificate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero { grid-template-columns: 1.4fr 0.6fr; gap: 24px; }
+  .hero h1 { font-size: 2.5rem; }
+  .site-header, .site-footer { gap: 16px; }
+  .nav-links, .footer-links { flex-wrap: wrap; gap: 12px; }
+}
+@media (max-width: 680px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2rem; }
+  .hero-showcase { display: none; }
+  .hero-actions { margin-top: 24px; gap: 10px; }
+  .projects .section-title, .collection-heading h1 { font-size: 2rem; }
+  .certificate-grid { grid-template-columns: 1fr; }
+  .certificate-preview { aspect-ratio: 2 / 1; }
+  .card-actions { flex-direction: row; }
+  .collection-toolbar > label { width: 100%; max-width: none; }
+  .collection-page { padding-top: 32px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
