@@ -28,52 +28,6 @@ const animatedItems = document.querySelectorAll(
       animatedItems.forEach((item) => revealObserver.observe(item));
     }
 
-    document.querySelectorAll(".project-preview").forEach((preview) => {
-      const slides = Array.from(preview.querySelectorAll(".image-trigger"));
-      if (slides.length < 2) return;
-
-      let currentIndex = 0;
-      const projectTitle = preview.closest(".project-card").querySelector("h3").textContent;
-      preview.classList.add("project-carousel");
-      preview.setAttribute("role", "group");
-      preview.setAttribute("aria-roledescription", "carousel");
-      preview.setAttribute("aria-label", `${projectTitle} images`);
-
-      const counter = document.createElement("span");
-      counter.className = "carousel-counter";
-      counter.setAttribute("aria-live", "polite");
-      counter.setAttribute("aria-atomic", "true");
-
-      function showSlide(index) {
-        currentIndex = (index + slides.length) % slides.length;
-        slides.forEach((slide, slideIndex) => {
-          slide.hidden = slideIndex !== currentIndex;
-        });
-        counter.textContent = `${currentIndex + 1} / ${slides.length}`;
-      }
-
-      [-1, 1].forEach((direction) => {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = `carousel-arrow ${direction === -1 ? "carousel-prev" : "carousel-next"}`;
-        button.setAttribute("aria-label", `${direction === -1 ? "Previous" : "Next"} image for ${projectTitle}`);
-        button.textContent = direction === -1 ? "\u2039" : "\u203a";
-        button.addEventListener("click", () => showSlide(currentIndex + direction));
-        preview.append(button);
-      });
-
-      preview.addEventListener("keydown", (event) => {
-        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
-        event.preventDefault();
-        const slideHadFocus = slides.includes(document.activeElement);
-        showSlide(currentIndex + (event.key === "ArrowLeft" ? -1 : 1));
-        if (slideHadFocus) slides[currentIndex].focus();
-      });
-
-      preview.append(counter);
-      showSlide(0);
-    });
-
     const imageLightbox = document.querySelector("#imageLightbox");
     const lightboxImage = document.querySelector("#lightboxImage");
     const lightboxCaption = document.querySelector("#lightboxCaption");

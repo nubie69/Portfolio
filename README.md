@@ -7,7 +7,8 @@ A polished static portfolio template for a 4th-year student preparing for intern
 - `index.html` - Page structure and editable portfolio content.
 - `projects.html` - Full project collection with category filters.
 - `certificates.html` - Full certificate collection with category filters and search.
-- `portfolio.js` - Shared filtering, image previews, and carousel behavior.
+- `portfolio.js` - Shared filtering and expanded image previews.
+- `alagad.html`, `zarvival.html`, `bottle-converter.html`, `cloudbrew.html`, `robotic-arm.html` - Project details and additional screenshots.
 - `styles.css` - Responsive styling, layout, and theme variables.
 - `assets/portfolio-hero.png` - Generated professional hero image.
 - `assets/resume/Zach-Gelacio-Resume.pdf` - Add your resume PDF here so the Resume links can download it.
