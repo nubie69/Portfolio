@@ -1,3 +1,16 @@
+const siteHeader = document.querySelector(".site-header");
+if (siteHeader) {
+  const updateHeaderHeight = () => {
+    document.documentElement.style.setProperty("--header-height", `${siteHeader.offsetHeight}px`);
+  };
+  updateHeaderHeight();
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(updateHeaderHeight).observe(siteHeader);
+  } else {
+    window.addEventListener("resize", updateHeaderHeight);
+  }
+}
+
 const animatedItems = document.querySelectorAll(
       ".section-heading, .stats div, .about-grid, .skill-card-grid article, .tech-strip span, .project-card, .timeline article, .certificate-card, .contact-form, .social-row"
     );

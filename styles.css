@@ -1047,7 +1047,11 @@ section[id] { scroll-margin-top: 104px; }
 .result-count { color: var(--muted); font-size: 0.8rem; margin: 24px 0 16px; }
 .empty-state { padding: 48px 0; text-align: center; color: var(--muted); }
 .nav-links [aria-current="page"] { color: var(--cyan); }
-.hero { min-height: auto; padding-top: 24px; padding-bottom: 12px; }
+.hero {
+  min-height: calc(100vh - var(--header-height, 84px));
+  min-height: calc(100svh - var(--header-height, 84px));
+  padding-block: clamp(32px, 6vh, 72px);
+}
 .hero h1 { font-size: 3rem; line-height: 1.12; }
 .hero-showcase { max-width: 270px; }
 .projects { padding-top: 24px; }
