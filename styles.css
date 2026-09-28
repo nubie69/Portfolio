@@ -1163,6 +1163,73 @@ section[id] { scroll-margin-top: 104px; }
   .contact .section-title, .detail-heading h1 { font-size: 2rem; }
 }
 
+/* Certificate gallery: readable details with framed document previews. */
+.certificate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.certificate-grid .certificate-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  border-radius: 12px;
+  background: linear-gradient(145deg, #17232c, #10161e);
+}
+.certificate-grid .certificate-preview {
+  display: grid;
+  aspect-ratio: auto;
+  min-width: 0;
+  padding: 18px;
+  border-right: 1px solid var(--line);
+  background: radial-gradient(ellipse at top left, rgba(38, 217, 208, 0.1), transparent 80%), #0b111a;
+}
+.certificate-preview .image-trigger {
+  align-self: center;
+  height: auto;
+  min-height: 0;
+  border-radius: 4px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+.certificate-preview .image-trigger img {
+  height: auto;
+  aspect-ratio: 4 / 3;
+  padding: 6px;
+  object-fit: contain;
+  background: #f1f3f4;
+}
+.certificate-grid .certificate-content { min-width: 0; padding: 24px; }
+.certificate-category {
+  align-self: flex-start;
+  margin-bottom: 16px;
+  padding: 4px 8px;
+  border: 1px solid rgba(38, 217, 208, 0.2);
+  border-radius: 4px;
+  color: var(--cyan);
+  background: rgba(38, 217, 208, 0.06);
+  font: 400 0.6rem/1.5 "DM Mono", monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.certificate-card[data-category="Artificial Intelligence"] .certificate-category { color: #b7c9ff; border-color: rgba(93, 140, 255, 0.3); background: rgba(93, 140, 255, 0.08); }
+.certificate-card[data-category="ICT"] .certificate-category { color: var(--amber); border-color: rgba(255, 200, 87, 0.25); background: rgba(255, 200, 87, 0.06); }
+.certificate-content h3 { font-size: 1rem; line-height: 1.5; }
+.certificate-content p { color: var(--muted); }
+.certificate-content time { color: var(--muted); font: 400 0.68rem/1.6 "DM Mono", monospace; }
+.certificate-view { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 18px; text-align: left; }
+.certificate-intro { max-width: 620px; margin: 12px 0 0; color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+[data-collection="certificates"] .collection-heading { margin-bottom: 32px; }
+[data-collection="certificates"] .collection-heading h1 { margin-bottom: 16px; font-size: clamp(2rem, 5vw, 3.5rem); }
+[data-collection="certificates"] .collection-toolbar { padding: 20px; border: 1px solid var(--line); border-radius: 10px; background: rgba(16, 24, 38, 0.78); }
+[data-collection="certificates"] .collection-search { max-width: none; }
+@media (max-width: 960px) {
+  .certificate-grid .certificate-card { grid-template-columns: 1fr; }
+  .certificate-grid .certificate-preview { aspect-ratio: 16 / 10; border-right: 0; border-bottom: 1px solid var(--line); }
+  .certificate-preview .image-trigger { width: 100%; height: 100%; min-height: 0; }
+  .certificate-preview .image-trigger img { height: 100%; aspect-ratio: auto; }
+}
+@media (max-width: 680px) {
+  .certificate-grid { grid-template-columns: 1fr; }
+  .certificate-grid .certificate-content { padding: 20px; }
+  [data-collection="certificates"] .collection-toolbar { padding: 16px; }
+  [data-collection="certificates"] .collection-search { min-width: 0; }
+}
+
 /* Give the introduction a visual frame and a clear transition to the work. */
 .hero {
   min-height: min(780px, calc(100svh - var(--header-height, 84px)));
