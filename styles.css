@@ -1121,6 +1121,24 @@ section[id] { scroll-margin-top: 104px; }
 .contact .section-heading { grid-column: 1; margin: 0; text-align: left; }
 .contact .section-title { font-size: 2.5rem; line-height: 1.15; margin-bottom: 20px; }
 .contact .section-heading > p:last-child { color: var(--muted); }
+.contact .section-heading > p { color: var(--muted); }
+.contact .section-heading > .eyebrow { color: var(--cyan); }
+.contact-email {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(38, 217, 208, 0.04);
+}
+.contact-email-label { flex-basis: 100%; color: var(--muted); font-size: 0.75rem; }
+.contact-email > a { min-width: 0; color: var(--cyan); font-size: 0.9rem; overflow-wrap: anywhere; text-underline-offset: 4px; user-select: text; }
+.contact-email .button { min-height: 40px; padding-inline: 14px; font-size: 0.75rem; }
+.contact-copy-status { flex-basis: 100%; margin: 0; color: var(--muted); font-size: 0.75rem; }
+.contact-copy-status:empty { display: none; }
 .contact-form { grid-column: 2; grid-row: 1 / 3; border: 0; padding: 0; background: none; box-shadow: none; }
 .contact .social-row { grid-column: 1; align-self: start; justify-content: start; margin-top: 0; }
 .project-detail { padding: 32px 0 72px; }

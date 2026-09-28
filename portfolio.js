@@ -1,3 +1,24 @@
+const copyEmailButton = document.querySelector("[data-copy-email]");
+if (copyEmailButton) {
+  const emailAddress = document.querySelector("#contact-email-address");
+  const copyStatus = document.querySelector(".contact-copy-status");
+  copyEmailButton.hidden = false;
+  copyEmailButton.addEventListener("click", async () => {
+    copyStatus.textContent = "";
+    try {
+      await navigator.clipboard.writeText(emailAddress.textContent.trim());
+      copyStatus.textContent = "Email address copied!";
+    } catch {
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(emailAddress);
+      selection.removeAllRanges();
+      selection.addRange(range);
+      copyStatus.textContent = "Select and copy the email address above, or press Ctrl+C (Cmd+C on Mac).";
+    }
+  });
+}
+
 const siteHeader = document.querySelector(".site-header");
 if (siteHeader) {
   const updateHeaderHeight = () => {
