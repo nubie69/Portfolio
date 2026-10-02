@@ -8,6 +8,7 @@ A polished static portfolio template for a 4th-year student preparing for intern
 - `projects.html` - Full project collection with category filters.
 - `certificates.html` - Full certificate collection with category filters and search.
 - `portfolio.js` - Shared filtering and expanded image previews.
+- `chatbot.js` - Frontend portfolio guide with preset replies and quick questions on every page. Edit the `topics` array to update answers and links; no API key, backend, or message storage is used.
 - `alagad.html`, `zarvival.html`, `bottle-converter.html`, `cloudbrew.html`, `robotic-arm.html` - Project details and additional screenshots.
 - `styles.css` - Responsive styling, layout, and theme variables.
 - `assets/portfolio-hero.png` - Generated professional hero image.
