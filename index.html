@@ -36,32 +36,33 @@
         </div>
         <div class="robot-companion" data-robot>
           <svg class="robot-art" viewBox="0 0 120 120" width="88" height="88" aria-hidden="true" focusable="false">
-            <ellipse class="robot-shadow" cx="60" cy="108" rx="25" ry="4" fill="currentColor" opacity=".15"/>
-            <g class="robot-float" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M60 27V17" stroke="currentColor" stroke-width="3"/>
-              <circle cx="60" cy="14" r="4" fill="#ffc857"/>
-              <rect x="26" y="39" width="8" height="17" rx="4" fill="currentColor"/>
-              <rect x="86" y="39" width="8" height="17" rx="4" fill="currentColor"/>
-              <rect x="32" y="27" width="56" height="41" rx="14" fill="#18343e" stroke="currentColor" stroke-width="2"/>
-              <rect x="39" y="35" width="42" height="25" rx="9" fill="#08151e"/>
-              <g class="robot-eyes" fill="currentColor">
-                <rect x="47" y="42" width="6" height="9" rx="3"/>
-                <rect x="67" y="42" width="6" height="9" rx="3"/>
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path class="robot-shadow" d="M36 111Q59 108 83 111M43 115L76 114" opacity=".3"/>
+              <g class="robot-stride">
+                <path class="robot-leg robot-leg-left" d="M49 87L45 98L39 105L51 106"/>
+                <path class="robot-leg robot-leg-right" d="M69 87L74 98L80 105L68 106"/>
+                <g class="robot-body">
+                  <path d="M59 28L57 17M56 17C48 15 54 7 59 10C66 13 62 19 56 17"/>
+                  <path d="M31 42L24 43L25 55L32 54M87 41L94 42L93 54L87 55"/>
+                  <path class="robot-paper" d="M34 29Q57 24 84 29L88 61Q65 67 32 62Z"/>
+                  <path d="M38 32L80 31M84 36L85 58" opacity=".35" stroke-width="1"/>
+                  <g class="robot-eyes">
+                    <path d="M47 42L46 48M70 41L71 47" stroke-width="4"/>
+                  </g>
+                  <path class="robot-smile" d="M53 54Q60 61 67 53"/>
+                  <path class="robot-gasp" d="M58 53Q65 50 65 56Q61 62 58 57Z"/>
+                  <path d="M52 65L52 70M68 65L68 70"/>
+                  <path class="robot-arm robot-arm-left" d="M40 74L29 81L24 75M21 71L24 76L28 73"/>
+                  <path class="robot-arm robot-arm-right" d="M79 74L91 80L98 70M95 67L98 71L103 69"/>
+                  <path class="robot-paper" d="M43 70L77 69L80 89L41 90Z"/>
+                  <path d="M48 77L59 76L59 83L48 83ZM65 78L72 77M66 83L71 82"/>
+                  <path d="M44 85L48 88M49 85L52 88" opacity=".4" stroke-width="1"/>
+                </g>
               </g>
-              <path d="M56 54Q60 57 64 54" fill="none" stroke="currentColor" stroke-width="2"/>
-              <path d="M50 92V98M70 92V98" stroke="#9ab3bf" stroke-width="6"/>
-              <path d="M45 99H53M67 99H75" stroke="currentColor" stroke-width="5"/>
-              <path d="M39 75L31 86" stroke="currentColor" stroke-width="6"/>
-              <g class="robot-wave" fill="none" stroke="currentColor" stroke-width="6">
-                <path d="M81 76L95 68L97 56"/>
-                <path d="M93 53L97 57L102 53" stroke-width="3"/>
-              </g>
-              <rect x="41" y="71" width="38" height="23" rx="8" fill="#18343e" stroke="currentColor" stroke-width="2"/>
-              <path d="M51 82H60" stroke="currentColor" stroke-width="3"/>
-              <circle cx="68" cy="82" r="3" fill="#ffc857"/>
+              <path class="robot-scare" d="M96 22L100 13M103 28L112 23M106 35L115 36"/>
             </g>
           </svg>
-          <div class="robot-caption"><span class="robot-name">Z-BOT <span aria-hidden="true">/</span> BUILD BUDDY</span><span>A little hello from my corner of the web.</span></div>
+          <div class="robot-caption"><span class="robot-name">Z-BOT <span aria-hidden="true">/</span> DOODLE BUDDY</span><span>A tiny wanderer. Move your mouse close &amp; watch it run!</span></div>
           <button class="robot-toggle" type="button" aria-label="Pause robot animation" aria-pressed="false" hidden>Pause</button>
         </div>
       </div>

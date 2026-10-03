@@ -2,13 +2,94 @@ const robot = document.querySelector("[data-robot]");
 if (robot) {
   const toggle = robot.querySelector(".robot-toggle");
   const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const walker = document.createElement("div");
+  walker.className = "robot-walker";
+  walker.setAttribute("aria-hidden", "true");
+  walker.append(robot.querySelector(".robot-art"));
+  document.body.append(walker);
+  let x = 28;
+  let y = window.innerHeight - 180;
+  let target = { x: window.innerWidth / 2, y };
+  let pointer = null;
+  let lastTime = 0;
+  let frame = null;
+  let fleeingUntil = 0;
   let paused = motionPreference.matches;
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+  const bounds = () => ({
+    left: 12,
+    right: Math.max(12, window.innerWidth - walker.offsetWidth - 12),
+    top: Math.min(190, window.innerHeight * 0.25),
+    bottom: Math.max(12, window.innerHeight - walker.offsetHeight - 86),
+  });
+  const place = () => {
+    const area = bounds();
+    x = clamp(x, area.left, area.right);
+    y = clamp(y, Math.min(area.top, area.bottom), area.bottom);
+    walker.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+  };
+  const wander = () => {
+    const area = bounds();
+    target = {
+      x: area.left + Math.random() * (area.right - area.left),
+      y: Math.min(area.top, area.bottom) + Math.random() * Math.max(0, area.bottom - area.top),
+    };
+  };
+  const escape = () => {
+    const area = bounds();
+    // Compare reachable directions so the robot can escape along an edge, too.
+    let bestScore = -Infinity;
+    for (let i = 0; i < 16; i++) {
+      const angle = i * Math.PI / 8;
+      const next = {
+        x: clamp(x + Math.cos(angle) * 220, area.left, area.right),
+        y: clamp(y + Math.sin(angle) * 220, Math.min(area.top, area.bottom), area.bottom),
+      };
+      const distance = Math.hypot(next.x + walker.offsetWidth / 2 - pointer.x, next.y + walker.offsetHeight / 2 - pointer.y);
+      const score = distance + Math.hypot(next.x - x, next.y - y) * 0.15;
+      if (score > bestScore) { bestScore = score; target = next; }
+    }
+  };
+  const tick = (now) => {
+    frame = null;
+    if (paused || document.hidden) return;
+    const dt = lastTime ? Math.min((now - lastTime) / 1000, 0.05) : 0;
+    lastTime = now;
+    if (pointer && Math.hypot(x + walker.offsetWidth / 2 - pointer.x, y + walker.offsetHeight / 2 - pointer.y) < 145) {
+      fleeingUntil = now + 850;
+      escape();
+    }
+    const running = now < fleeingUntil;
+    walker.classList.toggle("is-running", running);
+    let dx = target.x - x;
+    let dy = target.y - y;
+    let distance = Math.hypot(dx, dy);
+    if (distance < 4) {
+      wander();
+      dx = target.x - x;
+      dy = target.y - y;
+      distance = Math.hypot(dx, dy);
+    }
+    const step = Math.min(distance, (running ? 230 : 32) * dt);
+    if (distance > 0) { x += dx / distance * step; y += dy / distance * step; }
+    walker.classList.toggle("faces-left", dx < 0);
+    place();
+    frame = requestAnimationFrame(tick);
+  };
+  const syncMotion = () => {
+    if (frame !== null) cancelAnimationFrame(frame);
+    frame = null;
+    lastTime = 0;
+    walker.classList.toggle("is-paused", paused || document.hidden);
+    if (!paused && !document.hidden) frame = requestAnimationFrame(tick);
+  };
   const updateRobot = () => {
     toggle.hidden = motionPreference.matches;
     robot.classList.toggle("is-paused", paused);
     toggle.setAttribute("aria-pressed", String(paused));
     toggle.setAttribute("aria-label", paused ? "Resume robot animation" : "Pause robot animation");
     toggle.textContent = paused ? "Play" : "Pause";
+    syncMotion();
   };
   toggle.addEventListener("click", () => {
     paused = !paused;
@@ -18,6 +99,14 @@ if (robot) {
     paused = event.matches;
     updateRobot();
   });
+  window.addEventListener("pointermove", (event) => {
+    if (event.pointerType === "mouse") pointer = { x: event.clientX, y: event.clientY };
+  }, { passive: true });
+  document.addEventListener("pointerleave", () => { pointer = null; });
+  window.addEventListener("blur", () => { pointer = null; });
+  window.addEventListener("resize", () => { place(); wander(); });
+  document.addEventListener("visibilitychange", syncMotion);
+  place();
   updateRobot();
 }
 

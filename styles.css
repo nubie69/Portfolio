@@ -1420,7 +1420,7 @@ section[id] { scroll-margin-top: 104px; }
   .hero-explore { margin-left: auto; }
 }
 
-/* A small, in-flow companion keeps navigation and chat unobstructed. */
+/* The control stays in the introduction; the doodle roams without capturing clicks. */
 .robot-companion {
   display: flex;
   align-items: center;
@@ -1429,7 +1429,27 @@ section[id] { scroll-margin-top: 104px; }
   margin-top: 24px;
   color: var(--cyan);
 }
-.robot-art { display: block; width: 88px; height: 88px; flex-shrink: 0; overflow: visible; }
+.robot-art { display: block; width: 88px; height: 88px; flex-shrink: 0; overflow: visible; color: #eee9da; }
+.robot-paper { fill: #17232c; }
+.robot-walker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 88px;
+  height: 88px;
+  z-index: 40;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+  --robot-pace: 650ms;
+  filter: drop-shadow(0 2px 2px #08151e);
+}
+.robot-walker.faces-left .robot-art { transform: scaleX(-1); }
+.robot-walker.is-running { --robot-pace: 180ms; }
+.robot-gasp, .robot-scare { display: none; }
+.robot-walker.is-running .robot-smile { display: none; }
+.robot-walker.is-running .robot-gasp, .robot-walker.is-running .robot-scare { display: block; }
+.lightbox-open .robot-walker { visibility: hidden; }
 .robot-caption { display: grid; gap: 6px; min-width: 0; color: var(--muted); font-size: 0.7rem; line-height: 1.6; }
 .robot-name { color: var(--cyan); font: 400 0.6rem/1.5 "DM Mono", monospace; letter-spacing: 0.08em; }
 .robot-name > span { padding-inline: 4px; color: var(--muted); }
@@ -1448,18 +1468,20 @@ section[id] { scroll-margin-top: 104px; }
 }
 .robot-toggle:hover { color: var(--cyan); border-color: currentColor; }
 .robot-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
-.robot-float { animation: robot-hover 3.6s ease-in-out infinite; }
-.robot-shadow { transform-origin: 60px 108px; animation: robot-shadow 3.6s ease-in-out infinite; }
+.robot-body { animation: robot-bob var(--robot-pace, 650ms) ease-in-out infinite; }
+.robot-leg, .robot-arm { animation: robot-step var(--robot-pace, 650ms) ease-in-out infinite alternate; }
+.robot-leg-left { transform-origin: 49px 87px; }
+.robot-leg-right { transform-origin: 69px 87px; animation-direction: alternate-reverse; }
+.robot-arm-left { transform-origin: 40px 74px; animation-direction: alternate-reverse; }
+.robot-arm-right { transform-origin: 79px 74px; }
 .robot-eyes { transform-origin: 60px 46px; animation: robot-blink 5.2s infinite; }
-.robot-wave { transform-origin: 81px 76px; animation: robot-wave 4s ease-in-out infinite; }
-.robot-companion.is-paused svg * { animation-play-state: paused; }
-@keyframes robot-hover { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
-@keyframes robot-shadow { 0%, 100% { transform: scaleX(1); opacity: .15; } 50% { transform: scaleX(.75); opacity: .08; } }
+.robot-walker.is-paused svg * { animation-play-state: paused; }
+@keyframes robot-bob { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-3px) rotate(1deg); } }
+@keyframes robot-step { from { transform: rotate(-18deg); } to { transform: rotate(18deg); } }
 @keyframes robot-blink { 0%, 42%, 46%, 100% { transform: scaleY(1); } 44% { transform: scaleY(.1); } }
-@keyframes robot-wave { 0%, 45%, 100% { transform: rotate(0); } 12%, 32% { transform: rotate(18deg); } 22% { transform: rotate(-12deg); } }
 @media (max-width: 400px) {
   .robot-companion { gap: 8px; }
-  .robot-art { width: 70px; height: 70px; }
+  .robot-art, .robot-walker { width: 70px; height: 70px; }
 }
 
 /* Navigation stays compact on desktop and evenly spaced on small screens. */
