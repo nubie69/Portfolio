@@ -1,3 +1,26 @@
+const robot = document.querySelector("[data-robot]");
+if (robot) {
+  const toggle = robot.querySelector(".robot-toggle");
+  const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let paused = motionPreference.matches;
+  const updateRobot = () => {
+    toggle.hidden = motionPreference.matches;
+    robot.classList.toggle("is-paused", paused);
+    toggle.setAttribute("aria-pressed", String(paused));
+    toggle.setAttribute("aria-label", paused ? "Resume robot animation" : "Pause robot animation");
+    toggle.textContent = paused ? "Play" : "Pause";
+  };
+  toggle.addEventListener("click", () => {
+    paused = !paused;
+    updateRobot();
+  });
+  motionPreference.addEventListener("change", (event) => {
+    paused = event.matches;
+    updateRobot();
+  });
+  updateRobot();
+}
+
 const copyEmailButton = document.querySelector("[data-copy-email]");
 if (copyEmailButton) {
   const emailAddress = document.querySelector("#contact-email-address");

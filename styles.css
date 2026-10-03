@@ -1420,6 +1420,48 @@ section[id] { scroll-margin-top: 104px; }
   .hero-explore { margin-left: auto; }
 }
 
+/* A small, in-flow companion keeps navigation and chat unobstructed. */
+.robot-companion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 420px;
+  margin-top: 24px;
+  color: var(--cyan);
+}
+.robot-art { display: block; width: 88px; height: 88px; flex-shrink: 0; overflow: visible; }
+.robot-caption { display: grid; gap: 6px; min-width: 0; color: var(--muted); font-size: 0.7rem; line-height: 1.6; }
+.robot-name { color: var(--cyan); font: 400 0.6rem/1.5 "DM Mono", monospace; letter-spacing: 0.08em; }
+.robot-name > span { padding-inline: 4px; color: var(--muted); }
+.robot-toggle {
+  flex-shrink: 0;
+  min-width: 44px;
+  min-height: 44px;
+  margin-left: auto;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  font: 400 0.6rem "DM Mono", monospace;
+  cursor: pointer;
+}
+.robot-toggle:hover { color: var(--cyan); border-color: currentColor; }
+.robot-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+.robot-float { animation: robot-hover 3.6s ease-in-out infinite; }
+.robot-shadow { transform-origin: 60px 108px; animation: robot-shadow 3.6s ease-in-out infinite; }
+.robot-eyes { transform-origin: 60px 46px; animation: robot-blink 5.2s infinite; }
+.robot-wave { transform-origin: 81px 76px; animation: robot-wave 4s ease-in-out infinite; }
+.robot-companion.is-paused svg * { animation-play-state: paused; }
+@keyframes robot-hover { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes robot-shadow { 0%, 100% { transform: scaleX(1); opacity: .15; } 50% { transform: scaleX(.75); opacity: .08; } }
+@keyframes robot-blink { 0%, 42%, 46%, 100% { transform: scaleY(1); } 44% { transform: scaleY(.1); } }
+@keyframes robot-wave { 0%, 45%, 100% { transform: rotate(0); } 12%, 32% { transform: rotate(18deg); } 22% { transform: rotate(-12deg); } }
+@media (max-width: 400px) {
+  .robot-companion { gap: 8px; }
+  .robot-art { width: 70px; height: 70px; }
+}
+
 /* Navigation stays compact on desktop and evenly spaced on small screens. */
 .site-header .nav-links { gap: 4px; flex-wrap: nowrap; }
 .site-header .nav-links a {
