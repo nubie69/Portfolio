@@ -1420,15 +1420,7 @@ section[id] { scroll-margin-top: 104px; }
   .hero-explore { margin-left: auto; }
 }
 
-/* The control stays in the introduction; the doodle roams without capturing clicks. */
-.robot-companion {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  max-width: 420px;
-  margin-top: 24px;
-  color: var(--cyan);
-}
+/* The robot roams without capturing clicks. */
 .robot-art { display: block; width: 88px; height: 88px; flex-shrink: 0; overflow: visible; color: #182730; }
 .robot-gold { fill: #c69b50; }
 .robot-metal { fill: #adb8b9; }
@@ -1456,24 +1448,6 @@ section[id] { scroll-margin-top: 104px; }
 .robot-head { transform-origin: 60px 48px; transform: rotate(-4deg); transition: transform 180ms ease; }
 .robot-walker.is-running .robot-head { transform: translateY(-2px) rotate(3deg); }
 .lightbox-open .robot-walker { visibility: hidden; }
-.robot-caption { display: grid; gap: 6px; min-width: 0; color: var(--muted); font-size: 0.7rem; line-height: 1.6; }
-.robot-name { color: var(--cyan); font: 400 0.6rem/1.5 "DM Mono", monospace; letter-spacing: 0.08em; }
-.robot-name > span { padding-inline: 4px; color: var(--muted); }
-.robot-toggle {
-  flex-shrink: 0;
-  min-width: 44px;
-  min-height: 44px;
-  margin-left: auto;
-  padding: 6px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  background: transparent;
-  color: var(--muted);
-  font: 400 0.6rem "DM Mono", monospace;
-  cursor: pointer;
-}
-.robot-toggle:hover { color: var(--cyan); border-color: currentColor; }
-.robot-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
 .robot-body { animation: robot-bob var(--robot-pace, 650ms) ease-in-out infinite; }
 .robot-arm { animation: robot-step var(--robot-pace, 650ms) ease-in-out infinite alternate; }
 .robot-arm-left { transform-origin: 38px 68px; animation-direction: alternate-reverse; }
@@ -1485,7 +1459,6 @@ section[id] { scroll-margin-top: 104px; }
 @keyframes robot-roll { to { stroke-dashoffset: -8; } }
 @keyframes robot-blink { 0%, 42%, 46%, 100% { transform: scaleY(1); } 44% { transform: scaleY(.1); } }
 @media (max-width: 400px) {
-  .robot-companion { gap: 8px; }
   .robot-art, .robot-walker { width: 70px; height: 70px; }
 }
 

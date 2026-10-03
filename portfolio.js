@@ -1,6 +1,5 @@
 const robot = document.querySelector("[data-robot]");
 if (robot) {
-  const toggle = robot.querySelector(".robot-toggle");
   const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
   const walker = document.createElement("div");
   walker.className = "robot-walker";
@@ -83,21 +82,9 @@ if (robot) {
     walker.classList.toggle("is-paused", paused || document.hidden);
     if (!paused && !document.hidden) frame = requestAnimationFrame(tick);
   };
-  const updateRobot = () => {
-    toggle.hidden = motionPreference.matches;
-    robot.classList.toggle("is-paused", paused);
-    toggle.setAttribute("aria-pressed", String(paused));
-    toggle.setAttribute("aria-label", paused ? "Resume robot animation" : "Pause robot animation");
-    toggle.textContent = paused ? "Play" : "Pause";
-    syncMotion();
-  };
-  toggle.addEventListener("click", () => {
-    paused = !paused;
-    updateRobot();
-  });
   motionPreference.addEventListener("change", (event) => {
     paused = event.matches;
-    updateRobot();
+    syncMotion();
   });
   window.addEventListener("pointermove", (event) => {
     if (event.pointerType === "mouse") pointer = { x: event.clientX, y: event.clientY };
@@ -107,7 +94,7 @@ if (robot) {
   window.addEventListener("resize", () => { place(); wander(); });
   document.addEventListener("visibilitychange", syncMotion);
   place();
-  updateRobot();
+  syncMotion();
 }
 
 const copyEmailButton = document.querySelector("[data-copy-email]");
