@@ -1429,11 +1429,13 @@ section[id] { scroll-margin-top: 104px; }
   margin-top: 24px;
   color: var(--cyan);
 }
-.robot-art { display: block; width: 88px; height: 88px; flex-shrink: 0; overflow: visible; color: #34434c; }
-.robot-paper { fill: #fff0d6; }
-.robot-mint { fill: #bceae0; }
-.robot-pink { fill: #f7becb; }
-.robot-cheek { fill: #efa4ad; stroke: none; opacity: .8; }
+.robot-art { display: block; width: 88px; height: 88px; flex-shrink: 0; overflow: visible; color: #182730; }
+.robot-gold { fill: #c69b50; }
+.robot-metal { fill: #adb8b9; }
+.robot-neck { fill: #d0b477; }
+.robot-track-shell { fill: #34444b; stroke: #8b999b; stroke-width: 1.5; }
+.robot-tread { stroke: #a2ada9; stroke-width: 3; stroke-dasharray: 3 5; animation: robot-roll var(--robot-pace, 650ms) linear infinite; }
+.robot-iris { fill: #23616b; stroke: var(--cyan); stroke-width: 1; }
 .robot-walker {
   position: fixed;
   top: 0;
@@ -1449,9 +1451,10 @@ section[id] { scroll-margin-top: 104px; }
 }
 .robot-walker.faces-left .robot-art { transform: scaleX(-1); }
 .robot-walker.is-running { --robot-pace: 180ms; }
-.robot-gasp, .robot-scare { display: none; }
-.robot-walker.is-running .robot-smile { display: none; }
-.robot-walker.is-running .robot-gasp, .robot-walker.is-running .robot-scare { display: block; }
+.robot-scare { display: none; }
+.robot-walker.is-running .robot-scare { display: block; }
+.robot-head { transform-origin: 60px 48px; transform: rotate(-4deg); transition: transform 180ms ease; }
+.robot-walker.is-running .robot-head { transform: translateY(-2px) rotate(3deg); }
 .lightbox-open .robot-walker { visibility: hidden; }
 .robot-caption { display: grid; gap: 6px; min-width: 0; color: var(--muted); font-size: 0.7rem; line-height: 1.6; }
 .robot-name { color: var(--cyan); font: 400 0.6rem/1.5 "DM Mono", monospace; letter-spacing: 0.08em; }
@@ -1472,15 +1475,14 @@ section[id] { scroll-margin-top: 104px; }
 .robot-toggle:hover { color: var(--cyan); border-color: currentColor; }
 .robot-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
 .robot-body { animation: robot-bob var(--robot-pace, 650ms) ease-in-out infinite; }
-.robot-leg, .robot-arm { animation: robot-step var(--robot-pace, 650ms) ease-in-out infinite alternate; }
-.robot-leg-left { transform-origin: 49px 87px; }
-.robot-leg-right { transform-origin: 69px 87px; animation-direction: alternate-reverse; }
-.robot-arm-left { transform-origin: 40px 74px; animation-direction: alternate-reverse; }
-.robot-arm-right { transform-origin: 79px 74px; }
-.robot-eyes { transform-origin: 60px 46px; animation: robot-blink 5.2s infinite; }
+.robot-arm { animation: robot-step var(--robot-pace, 650ms) ease-in-out infinite alternate; }
+.robot-arm-left { transform-origin: 38px 68px; animation-direction: alternate-reverse; }
+.robot-arm-right { transform-origin: 81px 68px; }
+.robot-eyes { transform-origin: 60px 35px; animation: robot-blink 5.2s infinite; }
 .robot-walker.is-paused svg * { animation-play-state: paused; }
-@keyframes robot-bob { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-3px) rotate(1deg); } }
-@keyframes robot-step { from { transform: rotate(-18deg); } to { transform: rotate(18deg); } }
+@keyframes robot-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
+@keyframes robot-step { from { transform: rotate(-6deg); } to { transform: rotate(6deg); } }
+@keyframes robot-roll { to { stroke-dashoffset: -8; } }
 @keyframes robot-blink { 0%, 42%, 46%, 100% { transform: scaleY(1); } 44% { transform: scaleY(.1); } }
 @media (max-width: 400px) {
   .robot-companion { gap: 8px; }
