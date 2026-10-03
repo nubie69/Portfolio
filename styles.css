@@ -1429,8 +1429,11 @@ section[id] { scroll-margin-top: 104px; }
   margin-top: 24px;
   color: var(--cyan);
 }
-.robot-art { display: block; width: 88px; height: 88px; flex-shrink: 0; overflow: visible; color: #eee9da; }
-.robot-paper { fill: #17232c; }
+.robot-art { display: block; width: 88px; height: 88px; flex-shrink: 0; overflow: visible; color: #34434c; }
+.robot-paper { fill: #fff0d6; }
+.robot-mint { fill: #bceae0; }
+.robot-pink { fill: #f7becb; }
+.robot-cheek { fill: #efa4ad; stroke: none; opacity: .8; }
 .robot-walker {
   position: fixed;
   top: 0;

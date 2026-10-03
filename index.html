@@ -37,29 +37,40 @@
         <div class="robot-companion" data-robot>
           <svg class="robot-art" viewBox="0 0 120 120" width="88" height="88" aria-hidden="true" focusable="false">
             <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path class="robot-shadow" d="M36 111Q59 108 83 111M43 115L76 114" opacity=".3"/>
+              <path class="robot-shadow" d="M36 111Q59 108 83 111M43 115L76 114" stroke="#bceae0" opacity=".3"/>
               <g class="robot-stride">
-                <path class="robot-leg robot-leg-left" d="M49 87L45 98L39 105L51 106"/>
-                <path class="robot-leg robot-leg-right" d="M69 87L74 98L80 105L68 106"/>
+                <g class="robot-leg robot-leg-left">
+                  <path d="M49 87L47 100" stroke="#fff0d6" stroke-width="5"/>
+                  <path class="robot-mint" d="M46 98Q37 98 37 105Q42 110 53 106L53 100Z"/>
+                </g>
+                <g class="robot-leg robot-leg-right">
+                  <path d="M69 87L72 100" stroke="#fff0d6" stroke-width="5"/>
+                  <path class="robot-mint" d="M72 98Q82 97 83 105Q78 110 67 107L66 100Z"/>
+                </g>
                 <g class="robot-body">
-                  <path d="M59 28L57 17M56 17C48 15 54 7 59 10C66 13 62 19 56 17"/>
-                  <path d="M31 42L24 43L25 55L32 54M87 41L94 42L93 54L87 55"/>
-                  <path class="robot-paper" d="M34 29Q57 24 84 29L88 61Q65 67 32 62Z"/>
-                  <path d="M38 32L80 31M84 36L85 58" opacity=".35" stroke-width="1"/>
+                  <path d="M60 28Q64 21 60 16" stroke="#fff0d6" stroke-width="3"/>
+                  <path class="robot-pink" d="M60 17C44 9 55 2 60 8C66 1 76 10 60 17Z"/>
+                  <path class="robot-mint" d="M31 40Q20 37 21 49Q20 59 31 56M87 39Q99 38 99 49Q100 58 89 56"/>
+                  <path class="robot-paper" d="M42 26Q60 23 78 26Q91 27 91 41L90 56Q89 69 75 69L43 70Q28 69 28 55L28 41Q27 28 42 26Z"/>
+                  <path d="M36 36Q39 30 48 31M84 54Q85 62 78 63" opacity=".25" stroke-width="1"/>
+                  <ellipse class="robot-cheek" cx="39" cy="55" rx="6" ry="3.5"/>
+                  <ellipse class="robot-cheek" cx="80" cy="54" rx="6" ry="3.5"/>
                   <g class="robot-eyes">
-                    <path d="M47 42L46 48M70 41L71 47" stroke-width="4"/>
+                    <ellipse cx="46" cy="45" rx="5" ry="6.5" fill="currentColor" stroke="none"/>
+                    <ellipse cx="73" cy="44" rx="5" ry="6.5" fill="currentColor" stroke="none"/>
+                    <path d="M44 42L45 43M71 41L72 42" stroke="#ffffff" stroke-width="2.5"/>
                   </g>
-                  <path class="robot-smile" d="M53 54Q60 61 67 53"/>
-                  <path class="robot-gasp" d="M58 53Q65 50 65 56Q61 62 58 57Z"/>
-                  <path d="M52 65L52 70M68 65L68 70"/>
-                  <path class="robot-arm robot-arm-left" d="M40 74L29 81L24 75M21 71L24 76L28 73"/>
-                  <path class="robot-arm robot-arm-right" d="M79 74L91 80L98 70M95 67L98 71L103 69"/>
-                  <path class="robot-paper" d="M43 70L77 69L80 89L41 90Z"/>
-                  <path d="M48 77L59 76L59 83L48 83ZM65 78L72 77M66 83L71 82"/>
-                  <path d="M44 85L48 88M49 85L52 88" opacity=".4" stroke-width="1"/>
+                  <path class="robot-smile" d="M54 55Q57 60 60 55Q63 60 66 54" stroke-width="2"/>
+                  <ellipse class="robot-gasp" cx="60" cy="56" rx="3" ry="4" fill="#e6a3aa" stroke-width="2"/>
+                  <path d="M52 68L52 73M68 68L68 73" stroke="#fff0d6" stroke-width="4"/>
+                  <path class="robot-arm robot-arm-left robot-paper" d="M43 75Q36 73 30 78Q21 75 22 82Q22 88 29 87L43 82Z"/>
+                  <path class="robot-arm robot-arm-right robot-paper" d="M77 75Q83 76 88 72Q89 64 95 67Q101 71 95 77L81 84Z"/>
+                  <path class="robot-mint" d="M49 72Q59 70 71 72Q78 73 79 81L77 87Q76 94 68 94L51 94Q41 93 41 85L42 80Q43 73 49 72Z"/>
+                  <path class="robot-pink" d="M60 88C44 80 55 75 60 80C66 73 75 81 60 88Z" stroke-width="1.8"/>
+                  <path d="M46 84L46 87M73 79L74 82" opacity=".3" stroke-width="1"/>
                 </g>
               </g>
-              <path class="robot-scare" d="M96 22L100 13M103 28L112 23M106 35L115 36"/>
+              <path class="robot-scare" d="M96 24L100 16M103 30L111 26M105 37L113 38" stroke="#f7becb"/>
             </g>
           </svg>
           <div class="robot-caption"><span class="robot-name">Z-BOT <span aria-hidden="true">/</span> DOODLE BUDDY</span><span>A tiny wanderer. Move your mouse close &amp; watch it run!</span></div>
