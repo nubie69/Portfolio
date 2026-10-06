@@ -217,25 +217,56 @@ document.querySelectorAll("[data-collection]").forEach((collection) => {
   const count = collection.querySelector("[data-result-count]");
   const empty = collection.querySelector("[data-empty]");
   const reset = collection.querySelector("[data-reset]");
-  function filter() {
+  const pagination = collection.querySelector("[data-pagination]");
+  const previous = collection.querySelector("[data-previous]");
+  const next = collection.querySelector("[data-next]");
+  const pageStatus = collection.querySelector("[data-page-status]");
+  const pageSize = Number(collection.dataset.pageSize) || cards.length;
+  let page = 1;
+  function render() {
     const query = (search?.value || "").trim().toLocaleLowerCase();
-    let visible = 0;
+    const matches = cards.filter((card) =>
+      (!category || category.value === "All" || card.dataset.category === category.value)
+        && card.textContent.toLocaleLowerCase().includes(query));
+    const pages = Math.max(1, Math.ceil(matches.length / pageSize));
+    page = Math.max(1, Math.min(page, pages));
+    const start = (page - 1) * pageSize;
+    const visibleCards = matches.slice(start, start + pageSize);
     cards.forEach((card) => {
-      card.hidden = (category.value !== "All" && card.dataset.category !== category.value)
-        || !card.textContent.toLocaleLowerCase().includes(query);
-      if (!card.hidden) visible++;
+      card.hidden = !visibleCards.includes(card);
     });
-    count.textContent = `${visible} of ${cards.length} ${collection.dataset.collection}`;
-    empty.hidden = visible !== 0;
-    reset.hidden = category.value === "All" && !query;
+    count.textContent = pagination && matches.length
+      ? `Showing ${start + 1}\u2013${start + visibleCards.length} of ${matches.length} ${collection.dataset.collection}`
+      : `${matches.length} of ${cards.length} ${collection.dataset.collection}`;
+    if (empty) empty.hidden = matches.length !== 0;
+    if (reset) reset.hidden = (!category || category.value === "All") && !query;
+    if (pagination) {
+      pagination.hidden = pages <= 1;
+      previous.disabled = page === 1;
+      next.disabled = page === pages;
+      pageStatus.textContent = `Page ${page} of ${pages}`;
+    }
   }
-  category.addEventListener("change", filter);
+  function filter() {
+    page = 1;
+    render();
+  }
+  category?.addEventListener("change", filter);
   search?.addEventListener("input", filter);
-  reset.addEventListener("click", () => {
-    category.value = "All";
+  reset?.addEventListener("click", () => {
+    if (category) category.value = "All";
     if (search) search.value = "";
     filter();
     (search || category).focus();
   });
+  function changePage(direction) {
+    page += direction;
+    render();
+    // Move focus to the available control when the clicked button becomes disabled.
+    if (document.activeElement.disabled) (direction > 0 ? previous : next).focus();
+    count.scrollIntoView({ block: "start", behavior: "instant" });
+  }
+  previous?.addEventListener("click", () => changePage(-1));
+  next?.addEventListener("click", () => changePage(1));
   filter();
 });

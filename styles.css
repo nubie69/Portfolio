@@ -1144,6 +1144,25 @@ section[id] { scroll-margin-top: 104px; }
 .collection-search { flex: 1; min-width: 200px; max-width: 460px; }
 .result-count { color: var(--muted); font-size: 0.8rem; margin: 24px 0 16px; }
 .empty-state { padding: 48px 0; text-align: center; color: var(--muted); }
+.project-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 3vw, 28px);
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.project-pagination .button { gap: 10px; min-width: 124px; }
+.pagination-status { color: var(--muted); font: 400 0.75rem "DM Mono", monospace; white-space: nowrap; }
+.project-pagination .button:disabled { opacity: 0.35; cursor: default; transform: none; border-color: var(--line); }
+.project-pagination .button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+[data-collection="projects"] .result-count { scroll-margin-top: calc(var(--header-height, 84px) + 24px); }
+@media (max-width: 400px) {
+  .project-pagination { gap: 10px; }
+  .project-pagination .button { min-width: 0; padding-inline: 12px; font-size: 0.75rem; }
+  .pagination-status { font-size: 0.65rem; }
+}
 .nav-links [aria-current="page"] { color: var(--cyan); }
 .hero {
   min-height: calc(100vh - var(--header-height, 84px));
