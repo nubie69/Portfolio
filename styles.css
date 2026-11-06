@@ -1439,48 +1439,6 @@ section[id] { scroll-margin-top: 104px; }
   .hero-explore { margin-left: auto; }
 }
 
-/* The robot roams without capturing clicks. */
-.robot-art { display: block; width: 88px; height: 88px; flex-shrink: 0; overflow: visible; color: #182730; }
-.robot-gold { fill: #c69b50; }
-.robot-metal { fill: #adb8b9; }
-.robot-neck { fill: #d0b477; }
-.robot-track-shell { fill: #34444b; stroke: #8b999b; stroke-width: 1.5; }
-.robot-tread { stroke: #a2ada9; stroke-width: 3; stroke-dasharray: 3 5; animation: robot-roll var(--robot-pace, 650ms) linear infinite; }
-.robot-iris { fill: #23616b; stroke: var(--cyan); stroke-width: 1; }
-.robot-walker {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 88px;
-  height: 88px;
-  z-index: 40;
-  pointer-events: none;
-  user-select: none;
-  will-change: transform;
-  --robot-pace: 650ms;
-  filter: drop-shadow(0 2px 2px #08151e);
-}
-.robot-walker.faces-left .robot-art { transform: scaleX(-1); }
-.robot-walker.is-running { --robot-pace: 180ms; }
-.robot-scare { display: none; }
-.robot-walker.is-running .robot-scare { display: block; }
-.robot-head { transform-origin: 60px 48px; transform: rotate(-4deg); transition: transform 180ms ease; }
-.robot-walker.is-running .robot-head { transform: translateY(-2px) rotate(3deg); }
-.lightbox-open .robot-walker { visibility: hidden; }
-.robot-body { animation: robot-bob var(--robot-pace, 650ms) ease-in-out infinite; }
-.robot-arm { animation: robot-step var(--robot-pace, 650ms) ease-in-out infinite alternate; }
-.robot-arm-left { transform-origin: 38px 68px; animation-direction: alternate-reverse; }
-.robot-arm-right { transform-origin: 81px 68px; }
-.robot-eyes { transform-origin: 60px 35px; animation: robot-blink 5.2s infinite; }
-.robot-walker.is-paused svg * { animation-play-state: paused; }
-@keyframes robot-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
-@keyframes robot-step { from { transform: rotate(-6deg); } to { transform: rotate(6deg); } }
-@keyframes robot-roll { to { stroke-dashoffset: -8; } }
-@keyframes robot-blink { 0%, 42%, 46%, 100% { transform: scaleY(1); } 44% { transform: scaleY(.1); } }
-@media (max-width: 400px) {
-  .robot-art, .robot-walker { width: 70px; height: 70px; }
-}
-
 /* Navigation stays compact on desktop and evenly spaced on small screens. */
 .site-header .nav-links { gap: 4px; flex-wrap: nowrap; }
 .site-header .nav-links a {
